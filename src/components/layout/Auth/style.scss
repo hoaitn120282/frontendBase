@@ -1,0 +1,35 @@
+@import 'shared/variables';
+
+.main {
+    padding: 15px;
+    background: #f2f2f2;
+}
+
+.avatarAccount {
+    width: 36px;
+    height: 36px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    border-radius: 50%;
+    border: 2px solid #c8e6c9;
+}
+
+.wrapNotify {
+    width: 370px;
+    height: 490px;
+    display: flex !important;
+    flex-direction: column;
+    padding: 0;
+    transition: none !important;
+}
+
+.notifyHeaderStyle {
+    display: flex;
+    padding: 6px 15px;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #dddfe2;
+}
+.notifyStyle {
+    flex: 1 !important;
+}

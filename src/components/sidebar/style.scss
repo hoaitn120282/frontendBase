@@ -1,0 +1,56 @@
+@import 'shared/variables';
+.sub-menu {
+    :global {
+        .ant-menu-submenu-title {
+            padding-left: 15px !important;
+            a {
+                font-family: 'Lora', serif;
+            }
+        }
+        .ant-menu-item-selected {
+            background-color: transparent !important;
+            a {
+                color: $primary-color;
+            }
+        }
+        .ant-menu-item {
+            padding-right: 0 !important;
+            padding-left: 25px !important;
+            a {
+                text-transform: uppercase;
+                font-family: 'Lora', serif;
+                .name {
+                    margin-left: 15px;
+                }
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+}
+
+.wrap-list {
+    background: transparent !important;
+    a {
+        font-weight: 600;
+    }
+    :global {
+        .ant-menu-sub {
+            background: #232b39 !important;
+        }
+    }
+}
+
+.nav-list-container {
+    height: calc(100% - 4em);
+}
+
+.logo-sidebar {
+    width: 160px;
+    height: 40px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; // background-color: #fff;
+    margin: 0 auto;
+}

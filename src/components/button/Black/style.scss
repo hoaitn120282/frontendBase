@@ -1,0 +1,21 @@
+@import 'shared/variables';
+.button {
+    border: 1px solid $black-color;
+    background: $black-color;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    user-select: none;
+    border-radius: 2.4px;
+    color: $primary-color;
+    * {
+        color: $primary-color;
+    }
+    &:hover,
+    &:active {
+        background-color: $black-color !important;
+        color: $primary-color !important;
+    }
+}

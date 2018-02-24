@@ -1,0 +1,9 @@
+{
+    "eslint.enable": true,
+    "editor.formatOnSave": true,
+    "eslint.autoFixOnSave": true,
+    "prettier.tabWidth": 4,
+    "prettier.singleQuote": true,
+    "prettier.printWidth": 120,
+    "prettier.eslintIntegration": true
+}
