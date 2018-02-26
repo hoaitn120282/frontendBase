@@ -8,10 +8,10 @@ const requestLogin = (params, options) => {
     return Request.makePost(authAPI, data);
 };
 
-export default function*({ params, options, resolve, reject }) {
+export default function*({ params, options }) {
     try {
         const res = yield call(requestLogin, params, options);
-        yield put({
+        yield put.resolve({
             type: Types.AUTH_REQUEST_LOGIN_SUCCESS,
             payload: {
                 user: res.data.data,
@@ -19,11 +19,9 @@ export default function*({ params, options, resolve, reject }) {
                 refreshToken: res.data.data.refreshToken
             }
         });
-        yield call(Request.setToken, res.data.data.access_token);
-        yield call(Request.setRefreshToken, res.data.data.refreshToken);
-        resolve(res);
+        Request.setToken(res.data.data.access_token);
+        Request.setRefreshToken(res.data.data.refreshToken);
     } catch (error) {
         yield put({ type: Types.AUTH_REQUEST_LOGIN_FAIL, error });
-        reject(error);
     }
 }

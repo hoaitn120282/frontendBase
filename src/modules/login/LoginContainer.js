@@ -44,16 +44,15 @@ class LoginContainer extends Component {
     };
 
     onSubmit = values => {
-        const { authActions, translate } = this.props;
+        const { authActions } = this.props;
         Object.assign(values, { client_id: CLIENT_ID });
-        authActions
-            .login(values)
-            .then(res => {
-                this.openNotification('success', 'Login success');
-            })
-            .catch(error => {
-                this.openNotification('error', error.data ? error.data.message : translate('noResponseFromTheServer'));
-            });
+        authActions.login(values);
+        // .then(res => {
+        //     this.openNotification('success', 'Login success');
+        // })
+        // .catch(error => {
+        //     this.openNotification('error', error.data ? error.data.message : translate('noResponseFromTheServer'));
+        // });
     };
 
     render() {
@@ -63,7 +62,7 @@ class LoginContainer extends Component {
                 <Helmet>
                     <title>Login</title>
                 </Helmet>
-                {/* <Overlay loading={auth.hasRequestLogin} /> */}
+                <Overlay loading={auth.hasRequestLogin} />
                 <LoginComponent auth={auth} onSubmit={this.onSubmit} />
             </div>
         );

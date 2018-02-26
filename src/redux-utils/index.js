@@ -14,4 +14,5 @@ export const actions = {
     languageActions
 };
 
-export const sagas = [...authSagas, ...commonSagas];
+// export const sagas = [...authSagas, ...commonSagas];
+export const sagas = { authSagas, commonSagas };

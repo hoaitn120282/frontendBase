@@ -119,7 +119,7 @@ class NavList extends Component {
                                 key="common"
                                 title={
                                     <a>
-                                        <span>Common</span>
+                                        <span>COMMON</span>
                                     </a>
                                 }
                                 className={styles.subMenu}

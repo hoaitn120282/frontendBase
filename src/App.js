@@ -25,8 +25,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        commonActions: bindActionCreators(actions.commonActions, dispatch),
-        authActions: bindActionCreators(actions.authActions, dispatch)
+        authActions: bindActionCreators(actions.authActions, dispatch),
+        commonActions: bindActionCreators(actions.commonActions, dispatch)
     };
 };
 
@@ -44,10 +44,11 @@ class App extends Component {
     componentWillMount() {
         const { authActions, commonActions } = this.props;
         const promsList = [];
+        authActions.me();
         if (Request.token) {
-            promsList.push(authActions.me());
+            // promsList.push(this.props.dispatch(authActions.me()));
         }
-        promsList.push(commonActions.getConfig());
+        commonActions.getConfig();
         Promise.all(promsList)
             .then(() => {
                 this.setState({ isFetching: false });
@@ -103,9 +104,10 @@ class App extends Component {
 }
 
 App.propTypes = {
-    commonActions: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired,
+    dispatch: PropTypes.func,
     authActions: PropTypes.object.isRequired,
-    auth: PropTypes.object.isRequired
+    commonActions: PropTypes.object.isRequired
 };
 
 App.childContextTypes = {
