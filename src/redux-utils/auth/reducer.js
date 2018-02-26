@@ -12,7 +12,9 @@ const initState = {
     permissions: {},
     accountRoutes: [],
     role: '',
-    successLogout: false
+    successLogout: false,
+    errorRegister: {},
+    userRegister: {}
 };
 
 export default function(state = initState, action) {
@@ -119,6 +121,24 @@ export default function(state = initState, action) {
                 isRefreshToken: false,
                 token: action.payload.access_token,
                 refreshToken: action.payload.refresh_token
+            };
+        case Types.AUTH_REQUEST_REGISTER:
+            return {
+                ...state,
+                errorRegister: {},
+                userRegister: {}
+            };
+        case Types.AUTH_REQUEST_REGISTER_FAIL:
+            return {
+                ...state,
+                errorRegister: action.payload,
+                userRegister: {}
+            };
+        case Types.AUTH_REQUEST_REGISTER_SUCCESS:
+            return {
+                ...state,
+                errorRegister: {},
+                userRegister: action.payload
             };
 
         default:

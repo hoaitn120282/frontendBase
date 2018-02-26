@@ -43,10 +43,11 @@ class App extends Component {
     }
     componentWillMount() {
         const { authActions, commonActions } = this.props;
-        const promsList = [commonActions.getConfig()];
+        const promsList = [];
         if (Request.token) {
             promsList.push(authActions.me());
         }
+        promsList.push(commonActions.getConfig());
         Promise.all(promsList)
             .then(() => {
                 this.setState({ isFetching: false });

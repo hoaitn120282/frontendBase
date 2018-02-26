@@ -63,7 +63,7 @@ class LoginContainer extends Component {
                 <Helmet>
                     <title>Login</title>
                 </Helmet>
-                <Overlay loading={auth.hasRequestLogin} />
+                {/* <Overlay loading={auth.hasRequestLogin} /> */}
                 <LoginComponent auth={auth} onSubmit={this.onSubmit} />
             </div>
         );

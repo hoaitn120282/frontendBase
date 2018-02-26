@@ -1,11 +1,25 @@
 import * as Types from './constants';
 // import { bindActionToPromise } from 'helpers/Common';
 
-export const login = (params, options) => {
+export const login = (params = {}, options = {}) => {
     return dispatch => {
         return new Promise((resolve, reject) => {
             dispatch({
                 type: Types.AUTH_REQUEST_LOGIN,
+                params,
+                options,
+                resolve,
+                reject
+            });
+        });
+    };
+};
+
+export const register = (params, options) => {
+    return dispatch => {
+        return new Promise((resolve, reject) => {
+            dispatch({
+                type: Types.AUTH_REQUEST_REGISTER,
                 params,
                 options,
                 resolve,
