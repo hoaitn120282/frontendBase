@@ -17,7 +17,7 @@ const initState = {
 
 export default function(state = initState, action) {
     switch (action.type) {
-        case Types.BEFORE_REQUEST_LOGIN:
+        case Types.AUTH_REQUEST_LOGIN:
             return {
                 ...state,
                 isAuthenticated: false,
@@ -30,7 +30,7 @@ export default function(state = initState, action) {
                 accountRoutes: [],
                 role: ''
             };
-        case Types.ERROR_REQUEST_LOGIN:
+        case Types.AUTH_REQUEST_LOGIN_FAIL:
             return {
                 ...state,
                 isAuthenticated: false,
@@ -43,7 +43,7 @@ export default function(state = initState, action) {
                 accountRoutes: [],
                 role: ''
             };
-        case Types.SUCCESS_REQUEST_LOGIN:
+        case Types.AUTH_REQUEST_LOGIN_SUCCESS:
             return {
                 ...state,
                 isAuthenticated: true,
@@ -58,10 +58,10 @@ export default function(state = initState, action) {
             };
 
         case Types.RESET_LOGOUT_REQUEST:
-        case Types.BEFORE_REQUEST_LOGOUT:
+        case Types.AUTH_REQUEST_LOGOUT:
             return { ...state, successLogout: false };
-        case Types.ERROR_REQUEST_LOGOUT:
-        case Types.SUCCESS_REQUEST_LOGOUT:
+        case Types.AUTH_REQUEST_LOGOUT_FAIL:
+        case Types.AUTH_REQUEST_LOGOUT_SUCCESS:
             return {
                 ...state,
                 isAuthenticated: false,
@@ -74,7 +74,7 @@ export default function(state = initState, action) {
                 successLogout: true
             };
 
-        case Types.BEFORE_REQUEST_ME:
+        case Types.AUTH_REQUEST_ME:
             return {
                 ...state,
                 isAuthenticated: false,
@@ -86,7 +86,7 @@ export default function(state = initState, action) {
                 accountRoutes: [],
                 role: ''
             };
-        case Types.ERROR_REQUEST_ME:
+        case Types.AUTH_REQUEST_ME_FAIL:
             return {
                 ...state,
                 isAuthenticated: false,
@@ -98,7 +98,7 @@ export default function(state = initState, action) {
                 accountRoutes: [],
                 role: ''
             };
-        case Types.SUCCESS_REQUEST_ME:
+        case Types.AUTH_REQUEST_ME_SUCCESS:
             return {
                 ...state,
                 isAuthenticated: true,

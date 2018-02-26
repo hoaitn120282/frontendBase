@@ -1,5 +1,10 @@
 @import 'shared/variables';
 
+.wrap {
+    display: block;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 .main {
     padding: 15px;
     background: #f2f2f2;

@@ -28,3 +28,7 @@ export const parseLocation = (location = {}) => {
     const query = queryString.parse(search);
     return { ...location, query };
 };
+
+export const bindActionToPromise = (dispatch, actionCreator) => payload => {
+    return new Promise((resolve, reject) => dispatch(actionCreator(payload, resolve, reject)));
+};
