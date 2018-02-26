@@ -1,4 +1,4 @@
-import { auth, authActions } from './auth';
+import { auth, authActions, authSagas } from './auth';
 import { common, commonActions } from './common';
 import { register, registerActions } from './register';
 import { language, languageActions } from './language';
@@ -16,3 +16,5 @@ export const actions = {
     commonActions,
     languageActions
 };
+
+export const sagas = [...authSagas];

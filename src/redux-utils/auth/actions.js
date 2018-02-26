@@ -1,58 +1,20 @@
-import _ from 'lodash';
-import Request from 'helpers/Request';
-import { authAPI, meAPI, logoutAPI, refreshTokenAPI } from 'constants/apiURL';
 import * as Types from './constants';
 
 export function login(params, options) {
     return dispatch => {
         dispatch({
-            type: Types.BEFORE_REQUEST_LOGIN
+            type: Types.AUTH_REQUEST_LOGIN,
+            params,
+            options
         });
-        const data = Object.assign({ grant_type: 'password' }, params);
-        return Request.makePost(authAPI, data)
-            .then(res => {
-                Request.setToken(res.data.data.access_token);
-                Request.setRefreshToken(res.data.data.refreshToken);
-                dispatch({
-                    type: Types.SUCCESS_REQUEST_LOGIN,
-                    payload: {
-                        user: res.data.data,
-                        accessToken: res.data.data.access_token,
-                        refreshToken: res.data.data.refreshToken
-                    }
-                });
-                return { success: true, message: 'Login Successfully' };
-            })
-            .catch(error => {
-                dispatch({
-                    type: Types.ERROR_REQUEST_LOGIN,
-                    payLoad: error.data
-                });
-                throw error;
-            });
     };
 }
 
 export function logout() {
     return dispatch => {
         dispatch({
-            type: Types.BEFORE_REQUEST_LOGOUT
+            type: Types.AUTH_REQUEST_LOGOUT
         });
-        return Request.makeGet(logoutAPI)
-            .then(res => {
-                Request.clearToken();
-                Request.clearRefreshToken();
-                dispatch({
-                    type: Types.SUCCESS_REQUEST_LOGOUT,
-                    payload: res.data
-                });
-            })
-            .catch(err => {
-                dispatch({
-                    type: Types.ERROR_REQUEST_LOGOUT
-                });
-                throw err;
-            });
     };
 }
 
@@ -67,33 +29,7 @@ export function resetLogout() {
 export function me() {
     return dispatch => {
         dispatch({
-            type: Types.BEFORE_REQUEST_ME
-        });
-        return Request.makeGet(meAPI)
-            .then(res => {
-                dispatch({
-                    type: Types.SUCCESS_REQUEST_ME,
-                    payload: {
-                        accessToken: Request.token,
-                        user: res.data,
-                        refreshToken: res.data.refreshToken
-                    }
-                });
-                return res;
-            })
-            .catch(err => {
-                dispatch({
-                    type: Types.ERROR_REQUEST_ME
-                });
-                throw err;
-            });
-    };
-}
-
-export function toggleFullPermission() {
-    return dispatch => {
-        dispatch({
-            type: Types.TOGGLE_FULL_PERMISSION
+            type: Types.AUTH_REQUEST_ME
         });
     };
 }
@@ -101,17 +37,8 @@ export function toggleFullPermission() {
 export const refreshToken = refresh_token => {
     return dispatch => {
         dispatch({
-            type: Types.BEFORE_REQUEST_REFRESH_TOKEN
-        });
-        return Request.makePost(refreshTokenAPI, { refresh_token }).then((res = {}) => {
-            const { data = {} } = res;
-            Request.setToken(_.get(data, 'data.access_token', ''));
-            Request.setRefreshToken(_.get(data, 'data.refresh_token', ''));
-            dispatch({
-                type: Types.SUCCESS_REQUEST_REFRESH_TOKEN,
-                payload: _.get(data, 'data', {})
-            });
-            return res;
+            type: Types.AUTH_REQUEST_REFRESH_TOKEN,
+            refresh_token
         });
     };
 };

@@ -8,7 +8,7 @@ import { actions } from 'redux-utils';
 import appRoutes from 'routes';
 import { Cube as Loading } from 'components/loading';
 
-import DevTools from 'containers/DevTools';
+// import DevTools from 'containers/DevTools';
 import Request from 'helpers/Request';
 import dependencies from 'helpers/Dependencies';
 
@@ -96,7 +96,7 @@ class App extends Component {
                         </div>
                     </Fragment>
                 )}
-                <DevTools />
+                {/* <DevTools /> */}
             </Fragment>
         );
     }

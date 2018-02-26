@@ -23,7 +23,7 @@ class Request {
 
         this.axios = axios.create({
             baseURL: BASE_URL,
-            timeout: 15000,
+            timeout: 5000,
             headers,
             responseType: 'json',
             transformResponse: [
