@@ -7,7 +7,7 @@ export const me = () => {
     return Request.makeGet(meAPI);
 };
 
-export default function*({ params, options }) {
+export default function*() {
     try {
         const res = yield call(me);
 

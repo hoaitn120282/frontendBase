@@ -3,11 +3,11 @@ import * as Types from './../constants';
 import Request from 'helpers/Request';
 import { configAPI } from 'constants/apiURL';
 
-export function getConfig(params) {
-    return Request.makeGet(configAPI);
+export function getConfig(params = {}) {
+    return Request.makeGet(configAPI, params);
 }
 
-export default function*({ params }) {
+export default function*({ params = {} }) {
     try {
         const res = yield call(getConfig, params);
 

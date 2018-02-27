@@ -1,7 +1,7 @@
 import defaultAvatar from 'assets/images/default-avatar.png';
 const isProd = process.env.REACT_APP_IWD_ENV === 'production';
 const prodApi = 'http://52.62.10.140';
-const devApi = 'http://localhost:9000';
+const devApi = 'http://192.168.1.150:9000';
 
 const prodSocketURL = 'http://52.62.10.140:8000';
 const devSocketURL = 'http://52.77.228.172:3030';

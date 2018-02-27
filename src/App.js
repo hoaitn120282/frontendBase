@@ -9,7 +9,7 @@ import appRoutes from 'routes';
 import { Cube as Loading } from 'components/loading';
 
 // import DevTools from 'containers/DevTools';
-import Request from 'helpers/Request';
+// import Request from 'helpers/Request';
 import dependencies from 'helpers/Dependencies';
 
 dependencies.register('primaryColor', '#c0a328');
@@ -42,13 +42,13 @@ class App extends Component {
         return dependencies;
     }
     componentWillMount() {
-        const { authActions, commonActions } = this.props;
+        const { commonActions } = this.props;
         const promsList = [];
-        authActions.me();
-        if (Request.token) {
-            // promsList.push(this.props.dispatch(authActions.me()));
-        }
-        commonActions.getConfig();
+        // authActions.me();
+        // if (Request.token) {
+        //     promsList.push(this.props.dispatch(authActions.me()));
+        // }
+        commonActions.init();
         Promise.all(promsList)
             .then(() => {
                 this.setState({ isFetching: false });

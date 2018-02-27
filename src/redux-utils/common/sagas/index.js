@@ -1,4 +1,4 @@
-import { takeLatest, fork } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
 import getConfig from './get-config';
 import init from './init';
 import upload from './upload';
@@ -16,8 +16,13 @@ export function* initSaga() {
     yield takeLatest(Types.COMMON_REQUEST_INIT, init);
 }
 
+// export default function* rootSaga() {
+//     yield fork(watchUploadConfig);
+//     yield fork(watchUpload);
+//     yield fork(initSaga);
+// }
 export default function* rootSaga() {
-    yield fork(watchUploadConfig);
-    yield fork(watchUpload);
-    yield fork(initSaga);
+    yield takeLatest(Types.COMMON_FETCH_CONFIG, getConfig);
+    yield takeLatest(Types.COMMON_REQUEST_UPLOAD, upload);
+    yield takeLatest(Types.COMMON_REQUEST_INIT, init);
 }
