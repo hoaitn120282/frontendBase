@@ -42,7 +42,7 @@ class MainLayout extends PureComponent {
     render() {
         const { children, auth, authActions, languageActions, language } = this.props;
         return (
-            <div>
+            <div className={styles.wrap}>
                 <Header
                     auth={auth}
                     onLogout={this.onLogout}
