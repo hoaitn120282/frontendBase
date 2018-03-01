@@ -4,7 +4,8 @@
 
 * Build base on [create-react-app](https://github.com/facebook/create-react-app)
 * Integrate **Redux**, **React Router**, **HTTP** request Adapter
-* [Redux-Saga](https://github.com/redux-saga/redux-saga) and thunk promise
+* [Redux-Saga](https://github.com/redux-saga/redux-saga)
+* Return **Promise** in **Redux-Saga**
 * Flexible layout component
 * **HOC** component
 * Support **CSS**, **SASS**, **LESS**
