@@ -17,7 +17,7 @@ const initState = {
     userRegister: {}
 };
 
-export default function(state = initState, action) {
+export default (state = initState, action) => {
     switch (action.type) {
         case Types.AUTH_REQUEST_LOGIN:
             return {
@@ -144,4 +144,4 @@ export default function(state = initState, action) {
         default:
             return state;
     }
-}
+};

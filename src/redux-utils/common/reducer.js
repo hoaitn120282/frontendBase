@@ -30,7 +30,7 @@ const initState = {
     unitTime: []
 };
 
-export default function(state = initState, action) {
+export default (state = initState, action) => {
     switch (action.type) {
         case FETCH_CONFIG_SUCCESS:
             return { ...state, ...action.payload };
@@ -38,4 +38,4 @@ export default function(state = initState, action) {
         default:
             return state;
     }
-}
+};

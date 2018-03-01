@@ -21,7 +21,7 @@ const initState = {
     }
 };
 
-export default function(state = initState, action = {}) {
+export default (state = initState, action = {}) => {
     switch (action.type) {
         case Types.ON_CHANGE_LANGUAGE:
             return Object.assign({}, state, {
@@ -63,4 +63,4 @@ export default function(state = initState, action = {}) {
         default:
             return state;
     }
-}
+};

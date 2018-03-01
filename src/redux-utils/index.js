@@ -17,5 +17,4 @@ export const actions = {
     movieActions
 };
 
-// export const sagas = [...authSagas, ...commonSagas];
 export const sagas = { authSagas, commonSagas, movieSagas };
