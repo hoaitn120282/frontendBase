@@ -3,7 +3,7 @@ import Request from 'helpers/Request';
 import { meAPI } from 'constants/apiURL';
 import * as Types from './../constants';
 
-export const me = () => {
+const me = () => {
     return Request.makeGet(meAPI);
 };
 

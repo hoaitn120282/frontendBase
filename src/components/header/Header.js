@@ -32,8 +32,8 @@ class HeaderComponent extends Component {
         const context = this.context;
 
         return (
-            <header className="site-head d-flex align-items-center justify-content-between">
-                <div className="wrap mr-4 click-toggle-nav">
+            <header className={`${styles.siteHead} d-flex align-items-center justify-content-between`}>
+                <div className={`${styles.clickToggleNav} mr-4`}>
                     <FontAwesome
                         name="bars"
                         size="24"
@@ -42,11 +42,11 @@ class HeaderComponent extends Component {
                         style={{ cursor: 'pointer' }}
                     />
                 </div>
-                <div className="right-elems ml-auto d-flex">
-                    <div className="wrap hidden-sm-down">
+                <div className="ml-auto d-flex">
+                    <div className={`${styles.wrap} hidden-sm-down`}>
                         <FontAwesome name="arrows-alt" size="22" color="#111111" onClick={() => screenfull.toggle()} />
                     </div>
-                    <div className="wrap notify hidden-sm-down">
+                    <div className={`${styles.wrap} notify hidden-sm-down`}>
                         <UncontrolledDropdown>
                             <DropdownToggle tag="div">
                                 <FontAwesome name="bell" size="22" color="#1e2531" />
@@ -66,7 +66,7 @@ class HeaderComponent extends Component {
                         </UncontrolledDropdown>
                     </div>
 
-                    <div className="wrap profile">
+                    <div className={`${styles.wrap} ${styles.profile}`}>
                         <UncontrolledDropdown>
                             <DropdownToggle tag="div">
                                 <div

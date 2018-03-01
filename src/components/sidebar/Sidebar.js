@@ -164,7 +164,7 @@ NavList.propTypes = {
 
 const NavComponent = ({ language, languageActions, location, auth, mini }) => {
     return (
-        <nav className={`site-nav ${mini ? 'mini' : ''}`}>
+        <nav className={`${styles.siteNav} ${mini ? styles.mini : ''}`}>
             <NavHead />
             <NavList location={location} language={language} languageActions={languageActions} auth={auth} />
         </nav>

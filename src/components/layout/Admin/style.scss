@@ -1,4 +1,39 @@
+@import 'shared/variables';
+
 .main {
     padding: 15px;
     background: #f2f2f2;
+}
+
+.appWrapper {
+    display: block;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.contentContainer {
+    width: 100%;
+    transform: translate(0, 0);
+    position: relative;
+    @media (min-width: 992px) {
+        &.full {
+            width: calc(100% - 0.75em);
+            transform: translate(0.75em, 0);
+        }
+        width: calc(100% - #{$sidebar-width});
+        transform: translate($sidebar-width, 0); // always hide on desktop
+        .menuDropshadow {
+            display: none !important;
+        }
+    } // show on only menu show + mobile view (for hiding navigation)
+    .menuDropshadow {
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: $zindex-dropdown-backdrop;
+    }
 }

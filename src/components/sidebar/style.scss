@@ -1,5 +1,75 @@
 @import 'shared/variables';
-.sub-menu {
+.left-side {
+    background: #dddddd;
+}
+
+.siteNav {
+    border-right: none;
+    width: $sidebar-width;
+    position: fixed;
+    z-index: $zindex-navbar-fixed;
+    top: 0;
+    bottom: 0;
+    transition: 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+    box-shadow: 1px 0 2px rgba(0, 0, 0, 0.05);
+    background: $md-color-nav;
+    transform: translate(-100%, 0);
+
+    &.mini {
+        transform: translate(0, 0);
+    } // only show on large devices.
+    @media (min-width: 992px) {
+        transform: translate(0, 0);
+        &.mini {
+            transform: translate(-95%, 0);
+            &:hover {
+                transform: translate(0, 0);
+            }
+        }
+    }
+    :global {
+        .scrollarea {
+            .scrollbar-container {
+                opacity: 0;
+                &.vertical {
+                    width: 15px;
+                }
+            }
+            .scrollbar-container:hover {
+                background: transparent;
+            }
+        }
+    }
+}
+
+.navHead {
+    border-bottom: 1px solid $md-yellow-50;
+    padding: 0.8rem 0rem 0.8rem 1.5rem;
+    text-align: center;
+    position: relative;
+    height: 4.4em;
+    margin-left: -1.5rem;
+}
+.navHead svg > path {
+    stroke: $md-white;
+}
+
+.navHead a {
+    color: $md-grey-900;
+    font-weight: 700;
+    > svg {
+        position: relative;
+        top: 1px;
+    }
+    > strong {
+        display: inline-block;
+        margin-left: 0.2rem;
+        letter-spacing: 2.4px;
+        text-shadow: -0.5px 0px 0 lighten($md-grey-900, 10%), 0.5px 0px 0 lighten($md-grey-900, 10%);
+    }
+}
+
+.subMenu {
     :global {
         .ant-menu-submenu-title {
             padding-left: 15px !important;
@@ -30,7 +100,7 @@
     }
 }
 
-.wrap-list {
+.wrapList {
     background: transparent !important;
     a {
         font-weight: 600;
@@ -44,13 +114,4 @@
 
 .nav-list-container {
     height: calc(100% - 4em);
-}
-
-.logo-sidebar {
-    width: 160px;
-    height: 40px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center; // background-color: #fff;
-    margin: 0 auto;
 }

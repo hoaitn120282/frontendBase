@@ -1,9 +1,10 @@
-@import './common';
+@import './mixins';
 @import './md-colors';
-@import './themes';
+
 // bootstrap override
 // ------------------
 // $brand-primary : $md-blue-a700;
+$primary-color: #c0a328;
 $sidebar-width: 17em;
 $brand-primary: $primary-color;
 $brand-success: $md-green-a700;

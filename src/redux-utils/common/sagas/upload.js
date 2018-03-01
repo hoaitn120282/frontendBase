@@ -3,7 +3,7 @@ import * as Types from './../constants';
 import Request from 'helpers/Request';
 import { uploadAPI } from 'constants/apiURL';
 
-export function upload(data = { file: {}, type: 'media' }, params = {}) {
+function upload(data = { file: {}, type: 'media' }, params = {}) {
     const { file, type } = data;
     return Request.makeUpload(`${uploadAPI}/${type}`, file, params);
 }

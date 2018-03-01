@@ -1,4 +1,5 @@
-import { call, put, take } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
+import _ from 'lodash';
 import Request from 'helpers/Request';
 import { authAPI } from 'constants/apiURL';
 import * as Types from './../constants';
@@ -8,29 +9,26 @@ const requestLogin = (params, options) => {
     return Request.makePost(authAPI, data);
 };
 
-export default function*() {
-    while (true) {
-        const { params, options, meta } = yield take(Types.AUTH_REQUEST_LOGIN);
-        try {
-            const res = yield call(requestLogin, params, options);
-            Request.setToken(res.data.data.access_token);
-            Request.setRefreshToken(res.data.data.refreshToken);
-            yield put({
-                meta,
-                type: Types.AUTH_REQUEST_LOGIN_SUCCESS,
-                payload: {
-                    user: res.data.data,
-                    accessToken: res.data.data.access_token,
-                    refreshToken: res.data.data.refreshToken
-                }
-            });
-        } catch (error) {
-            yield put({
-                type: Types.AUTH_REQUEST_LOGIN_FAIL,
-                error: true,
-                payload: error,
-                meta
-            });
-        }
+export default function*({ params, options, meta }) {
+    try {
+        const { data = {} } = yield call(requestLogin, params, options);
+        Request.setToken(_.get(data, 'data.access_token'));
+        Request.setRefreshToken(_.get(data, 'data.refreshToken'));
+        yield put({
+            meta,
+            type: Types.AUTH_REQUEST_LOGIN_SUCCESS,
+            payload: {
+                user: data.data,
+                accessToken: _.get(data, 'data.access_token'),
+                refreshToken: _.get(data, 'data.refreshToken')
+            }
+        });
+    } catch (error) {
+        yield put({
+            type: Types.AUTH_REQUEST_LOGIN_FAIL,
+            error: true,
+            payload: error,
+            meta
+        });
     }
 }

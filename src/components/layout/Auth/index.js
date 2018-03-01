@@ -5,8 +5,7 @@ import { bindActionCreators } from 'redux';
 import { actions } from 'redux-utils';
 // import routes from 'components/routes';
 
-import Header from './Header';
-
+import Header from 'components/header/Header';
 import styles from './style.scss';
 
 class MainLayout extends PureComponent {

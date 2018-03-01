@@ -15,7 +15,7 @@ class NavHead extends Component {
 
     render() {
         return (
-            <header className="nav-head">
+            <header className={styles.navHead}>
                 <NavLink to="/">
                     <div
                         className={styles.logoSidebar}

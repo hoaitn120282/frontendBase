@@ -3,7 +3,7 @@ import Request from 'helpers/Request';
 import { logoutAPI } from 'constants/apiURL';
 import * as Types from './../constants';
 
-export const logout = () => {
+const logout = () => {
     return Request.makeGet(logoutAPI).then(res => {
         Request.clearToken();
         Request.clearRefreshToken();

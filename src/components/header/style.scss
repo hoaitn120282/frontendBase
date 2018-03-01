@@ -1,5 +1,5 @@
 @import 'shared/variables';
-.avatar-account {
+.avatarAccount {
     width: 36px;
     height: 36px;
     background-repeat: no-repeat;
@@ -26,4 +26,38 @@
 }
 .notifyStyle {
     flex: 1 !important;
+}
+
+.siteHead {
+    // height: 4.4em; // ---- wrap for right elements
+    height: 62px;
+    padding: 1.2rem;
+    border-bottom: solid 1px $md-yellow-50;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.19);
+}
+.clickToggleNav {
+    background: $md-color-nav;
+    padding: 4px 5px;
+}
+
+.profile {
+    img {
+        width: 36px;
+        height: 36px;
+        border-radius: 100%;
+        border: 2px solid $md-green-100;
+    }
+    padding: 0 !important;
+}
+
+.wrap {
+    padding: 0.5rem;
+    margin-left: 1.8rem;
+    cursor: pointer;
+    position: relative;
+    :global {
+        .dropdown-item:active {
+            color: $md-grey-900;
+        }
+    }
 }

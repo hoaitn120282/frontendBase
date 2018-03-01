@@ -3,9 +3,9 @@ import * as Types from './../constants';
 import Request from 'helpers/Request';
 import { configAPI } from 'constants/apiURL';
 
-export function getConfig(params = {}) {
+const getConfig = (params = {}) => {
     return Request.makeGet(configAPI, params);
-}
+};
 
 export default function*({ params, meta }) {
     try {

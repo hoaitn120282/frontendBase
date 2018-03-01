@@ -3,7 +3,7 @@ import Request from 'helpers/Request';
 import { registerAPI } from 'constants/apiURL';
 import * as Types from './../constants';
 
-export const registerAction = (params = {}, options = {}) => {
+const registerAction = (params = {}, options = {}) => {
     return Request.makePost(registerAPI, params, options);
 };
 

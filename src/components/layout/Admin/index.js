@@ -44,11 +44,11 @@ class MainLayout extends PureComponent {
         const navMini = this.state.navMini;
         const { children, auth, authActions, languageActions, language } = this.props;
         return (
-            <div className="app-wrapper">
+            <div className={styles.appWrapper}>
                 <Sidebar mini={navMini} />
-                <div className={`content-container ${navMini ? 'full' : ''}`}>
+                <div className={`${styles.contentContainer} ${navMini ? styles.full : ''}`}>
                     <div
-                        className="menu-dropshadow"
+                        className={styles.menuDropshadow}
                         style={{ display: navMini ? 'block' : 'none' }}
                         onClick={this.hideNav}
                     />

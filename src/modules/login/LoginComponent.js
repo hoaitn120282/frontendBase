@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Label, FormGroup, Button, Row, Col } from 'reactstrap';
-import _ from 'lodash';
-import classnames from 'classnames';
 
 import { Translate } from 'components/utils';
-import ErrMessage from 'components/errors/ErrMessage';
 import logo from 'assets/images/logo.png';
+import styles from './style.scss';
 
-class Login extends Component {
+class Login extends PureComponent {
     constructor(props) {
         super(props);
 
@@ -24,88 +22,64 @@ class Login extends Component {
     handleLogin = e => {
         e.preventDefault();
         e.stopPropagation();
-        const { dataForm: { username, password } } = this.state;
+        const { dataForm } = this.state;
         const { onSubmit } = this.props;
 
-        onSubmit({ username, password });
+        onSubmit(dataForm);
     };
-    _handleChangeUsername = e => {
-        //update value input
-        const dataForm = Object.assign({}, this.state.dataForm);
-        dataForm.username = e.target.value;
-        this.setState({ dataForm });
+
+    onChange = e => {
+        const { name, value } = e.target;
+        this.setState({ dataForm: { ...this.state.dataForm, [name]: value } });
     };
-    _handleChangePassword = e => {
-        //update value input
-        const dataForm = Object.assign({}, this.state.dataForm);
-        dataForm.password = e.target.value;
-        this.setState({ dataForm });
-    };
+
     render() {
         return (
-            <div className="view">
-                <div className="view-content view-pages view-session d-flex justify-content-center page-login ">
-                    <div className="container-fluid">
-                        <Row>
-                            <Col md={{ size: 4, offset: 4 }}>
-                                <div className="justify-content-center logo-login">
-                                    <img className="img-fluid img-login" src={logo} alt="Logo" />
-                                </div>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col md={{ size: 4, offset: 4 }} className="form-login">
-                                <h3 className="text-uppercase">
-                                    <Translate text="login" />
-                                </h3>
-                                <Form
-                                    className="mt-5"
-                                    name="loginForm"
-                                    id="loginForm"
-                                    noValidate
-                                    autoComplete="off"
-                                    onSubmit={this.handleLogin}
-                                >
-                                    <FormGroup className="mb-4">
-                                        <Label for="email">Email Address</Label>
-                                        <Input
-                                            required
-                                            name="email"
-                                            placeholder="abcxyz@gmail.com"
-                                            onChange={this._handleChangeUsername}
-                                            className={classnames({
-                                                'error-input': this.state.validationForm['email']
-                                            })}
-                                        />
-                                        <ErrMessage label="Email" name="email" obj={this.state.validationForm} />
-                                    </FormGroup>
-                                    <FormGroup className="mb-4">
-                                        <Label for="password">Password</Label>
-                                        <Input
-                                            required
-                                            name="password"
-                                            type="password"
-                                            onChange={this._handleChangePassword}
-                                            placeholder="longsecret"
-                                            className={classnames({
-                                                'error-input': this.state.validationForm['password']
-                                            })}
-                                        />
-                                        <ErrMessage label="Password" name="password" obj={this.state.validationForm} />
-                                    </FormGroup>
-                                    <FormGroup className="text-right mb-0">
-                                        <Button
-                                            type="submit"
-                                            className="text-uppercase btn-form btn-login float-right"
-                                            disabled={!_.isEmpty(this.state.validationForm)}
-                                        >
-                                            <Translate text="login" />
-                                        </Button>
-                                    </FormGroup>
-                                </Form>
-                            </Col>
-                        </Row>
-                    </div>
+            <div className={`${styles.pageLogin} d-flex justify-content-center position-relative`}>
+                <div className="container-fluid">
+                    <Row>
+                        <Col md={{ size: 4, offset: 4 }}>
+                            <div className={`justify-content-center ${styles.logoLogin}`}>
+                                <img className={`img-fluid ${styles.imgLogin}`} src={logo} alt="Logo" />
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={{ size: 4, offset: 4 }} className={styles.formLogin}>
+                            <h3 className="text-uppercase">
+                                <Translate text="login" />
+                            </h3>
+                            <Form className="mt-5" noValidate autoComplete="off" onSubmit={this.handleLogin}>
+                                <FormGroup className="mb-4">
+                                    <Label for="email">Email Address</Label>
+                                    <Input
+                                        type="text"
+                                        required
+                                        name="username"
+                                        placeholder="Username"
+                                        onChange={this.onChange}
+                                    />
+                                </FormGroup>
+                                <FormGroup className="mb-4">
+                                    <Label>
+                                        <Translate text="password" />
+                                    </Label>
+                                    <Input
+                                        required
+                                        name="password"
+                                        type="password"
+                                        onChange={this.onChange}
+                                        placeholder="Password"
+                                    />
+                                </FormGroup>
+                                <FormGroup className="text-right mb-0">
+                                    <Button type="submit" className={`${styles.btnLogin} text-uppercase float-right`}>
+                                        <Translate text="login" />
+                                    </Button>
+                                </FormGroup>
+                            </Form>
+                        </Col>
+                    </Row>
                 </div>
             </div>
         );
@@ -114,7 +88,6 @@ class Login extends Component {
 
 Login.propTypes = {
     onSubmit: PropTypes.func.isRequired
-    // auth: PropTypes.object.isRequired
 };
 
 export default Login;

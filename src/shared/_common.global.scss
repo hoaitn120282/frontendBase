@@ -1,0 +1,53 @@
+body {
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex {
+    flex: 1;
+}
+
+[role='button'],
+button {
+    cursor: pointer;
+}
+
+.bg-white {
+    background: #ffffff;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.pac-logo {
+    z-index: 9999;
+}
+
+.ant-notification {
+    z-index: 99999 !important;
+}
+
+.sixteen-nine {
+    @include aspect-ratio(16, 9);
+}
+
+.has-shadow {
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.18);
+}
+
+.has-card {
+    border-top: 3px solid $primary-color;
+}
+
+.no-select {
+    user-select: none;
+}
