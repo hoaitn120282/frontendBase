@@ -15,7 +15,7 @@ export default function*() {
             const res = yield call(requestLogin, params, options);
             Request.setToken(res.data.data.access_token);
             Request.setRefreshToken(res.data.data.refreshToken);
-            yield put.resolve({
+            yield put({
                 meta,
                 type: Types.AUTH_REQUEST_LOGIN_SUCCESS,
                 payload: {
@@ -25,7 +25,12 @@ export default function*() {
                 }
             });
         } catch (error) {
-            yield put({ type: Types.AUTH_REQUEST_LOGIN_FAIL, error });
+            yield put({
+                type: Types.AUTH_REQUEST_LOGIN_FAIL,
+                error: true,
+                payload: error,
+                meta
+            });
         }
     }
 }

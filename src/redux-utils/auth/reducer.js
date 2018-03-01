@@ -40,7 +40,7 @@ export default (state = initState, action) => {
                 token: '',
                 refreshToken: '',
                 userInfo: {},
-                errorLogin: action.payLoad,
+                errorLogin: action.payload,
                 permissions: {},
                 accountRoutes: [],
                 role: ''

@@ -9,12 +9,17 @@ const getMovie = name => {
 export default function*({ name, options, meta }) {
     try {
         const res = yield call(getMovie, name, options);
-        yield put.resolve({
+        yield put({
             type: Types.MOVIE_FETCH_MOVIE_SUCCESS,
             payload: res.data,
             meta
         });
     } catch (error) {
-        yield put({ type: Types.MOVIE_FETCH_MOVIE_ERROR, error });
+        yield put({
+            type: Types.MOVIE_FETCH_MOVIE_ERROR,
+            error: true,
+            payload: error,
+            meta
+        });
     }
 }

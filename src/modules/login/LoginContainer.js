@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { notification } from 'antd';
 import queryString from 'query-string';
 
 import { translate } from 'helpers/Translate';
@@ -11,6 +10,7 @@ import { actions } from 'redux-utils';
 import { CLIENT_ID } from 'constants/config';
 import LoginComponent from './LoginComponent';
 import { Overlay } from 'components/loading';
+import { Notification } from 'helpers';
 import { DEFAULT_REDIRECT } from 'constants/config';
 
 class LoginContainer extends Component {
@@ -34,25 +34,16 @@ class LoginContainer extends Component {
         }
     };
 
-    openNotification = (type, message) => {
-        const { translate } = this.props;
-        notification[type]({
-            message: translate('notification'),
-            description: message,
-            duration: 3
-        });
-    };
-
     onSubmit = values => {
-        const { authActions } = this.props;
+        const { authActions, translate } = this.props;
         Object.assign(values, { client_id: CLIENT_ID });
         authActions
             .login(values)
             .then(res => {
-                this.openNotification('success', 'Login success');
+                Notification.success('loginSuccess', translate);
             })
-            .catch(error => {
-                this.openNotification('error', error.data ? error.data.message : translate('noResponseFromTheServer'));
+            .catch(({ data = {} }) => {
+                Notification.error(data.message || 'noResponseFromTheServer', translate);
             });
     };
 

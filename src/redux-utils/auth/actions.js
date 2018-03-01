@@ -19,7 +19,10 @@ export const register = (params, options) => ({
 });
 
 export const logout = () => ({
-    type: Types.AUTH_REQUEST_LOGOUT
+    type: Types.AUTH_REQUEST_LOGOUT,
+    meta: {
+        thunk: true
+    }
 });
 
 export const resetLogout = () => ({

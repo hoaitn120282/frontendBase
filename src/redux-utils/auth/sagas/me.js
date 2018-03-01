@@ -11,7 +11,7 @@ export default function*({ meta }) {
     try {
         const res = yield call(me);
 
-        yield put.resolve({
+        yield put({
             type: Types.AUTH_REQUEST_ME_SUCCESS,
             payload: {
                 accessToken: Request.token,
@@ -21,6 +21,11 @@ export default function*({ meta }) {
             meta
         });
     } catch (error) {
-        yield put({ type: Types.AUTH_REQUEST_ME_FAIL, error });
+        yield put({
+            type: Types.AUTH_REQUEST_ME_FAIL,
+            error: true,
+            payload: error,
+            meta
+        });
     }
 }

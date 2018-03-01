@@ -11,12 +11,17 @@ export default function*({ params, meta }) {
     try {
         const res = yield call(getConfig, params);
 
-        yield put.resolve({
+        yield put({
             type: Types.COMMON_FETCH_CONFIG_SUCCESS,
             payload: res.data,
             meta
         });
     } catch (error) {
-        yield put({ type: Types.COMMON_FETCH_CONFIG_FAIL, error });
+        yield put({
+            type: Types.COMMON_FETCH_CONFIG_FAIL,
+            error: true,
+            payload: error,
+            meta
+        });
     }
 }
