@@ -7,13 +7,14 @@ export function getConfig(params = {}) {
     return Request.makeGet(configAPI, params);
 }
 
-export default function*({ params = {} }) {
+export default function*({ params, meta }) {
     try {
         const res = yield call(getConfig, params);
 
-        yield put({
+        yield put.resolve({
             type: Types.COMMON_FETCH_CONFIG_SUCCESS,
-            payload: res.data
+            payload: res.data,
+            meta
         });
     } catch (error) {
         yield put({ type: Types.COMMON_FETCH_CONFIG_FAIL, error });

@@ -3,13 +3,19 @@ import * as Types from './constants';
 export const login = (params = {}, options = {}) => ({
     type: Types.AUTH_REQUEST_LOGIN,
     params,
-    options
+    options,
+    meta: {
+        thunk: true
+    }
 });
 
 export const register = (params, options) => ({
     type: Types.AUTH_REQUEST_REGISTER,
     params,
-    options
+    options,
+    meta: {
+        thunk: true
+    }
 });
 
 export const logout = () => ({
@@ -21,10 +27,16 @@ export const resetLogout = () => ({
 });
 
 export const me = () => ({
-    type: Types.AUTH_REQUEST_ME
+    type: Types.AUTH_REQUEST_ME,
+    meta: {
+        thunk: true
+    }
 });
 
 export const refreshToken = refresh_token => ({
     type: Types.AUTH_REQUEST_REFRESH_TOKEN,
-    refresh_token
+    refresh_token,
+    meta: {
+        thunk: true
+    }
 });

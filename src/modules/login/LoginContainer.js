@@ -46,13 +46,14 @@ class LoginContainer extends Component {
     onSubmit = values => {
         const { authActions } = this.props;
         Object.assign(values, { client_id: CLIENT_ID });
-        authActions.login(values);
-        // .then(res => {
-        //     this.openNotification('success', 'Login success');
-        // })
-        // .catch(error => {
-        //     this.openNotification('error', error.data ? error.data.message : translate('noResponseFromTheServer'));
-        // });
+        authActions
+            .login(values)
+            .then(res => {
+                this.openNotification('success', 'Login success');
+            })
+            .catch(error => {
+                this.openNotification('error', error.data ? error.data.message : translate('noResponseFromTheServer'));
+            });
     };
 
     render() {

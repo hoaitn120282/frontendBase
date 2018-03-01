@@ -14,6 +14,7 @@ import AccountContainer from 'modules/account/AccountContainer';
 import HomePage from 'modules/home/HomeContainer';
 import LoginContainer from 'modules/login/LoginContainer';
 import DashboardContainer from 'modules/dashboard/DashboardContainer';
+import MovieContainer from 'modules/movie/MovieContainer';
 
 // Guard
 // const AllRoleGuard = Authorization(['seller', 'agent', 'developer', 'admin']);
@@ -31,6 +32,7 @@ export default (
         <RouteLayout exact path="/" component={HomePage} />
         <RouteLayout layout={EmptyLayout} path="/login" component={LoginContainer} />
         <PrivateRouteLayout layout={AuthLayout} path="/account" component={AccountContainer} />
+        <PrivateRouteLayout layout={AuthLayout} path="/movie" component={MovieContainer} />
         <PrivateRouteLayout layout={AdminLayout} path="/dashboard" component={DashboardContainer} />
 
         <RouteLayout layout={EmptyLayout} path="/404" component={Page404} />

@@ -1,5 +1,5 @@
 import common from './reducer';
 import * as commonActions from './actions';
-import * as commonSagas from './sagas';
+import commonSagas from './sagas';
 
 export { common, commonActions, commonSagas };

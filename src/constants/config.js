@@ -26,3 +26,4 @@ export const UPLOAD_MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB
 
 export const DEFAULT_AVATAR = defaultAvatar;
 export const GOOGLE_MAP_API_KEY = 'AIzaSyDWgwCQGoLetkP-8OFb84Dr_jjI8ogHPj8';
+export const FB_APP_ID = '';

@@ -7,17 +7,18 @@ export const me = () => {
     return Request.makeGet(meAPI);
 };
 
-export default function*() {
+export default function*({ meta }) {
     try {
         const res = yield call(me);
 
-        yield put({
+        yield put.resolve({
             type: Types.AUTH_REQUEST_ME_SUCCESS,
             payload: {
                 accessToken: Request.token,
                 user: res.data,
                 refreshToken: res.data.refreshToken
-            }
+            },
+            meta
         });
     } catch (error) {
         yield put({ type: Types.AUTH_REQUEST_ME_FAIL, error });
