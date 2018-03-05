@@ -4,7 +4,16 @@ Chúng ta sẽ sử dụng `https://api.tvmaze.com` để tạo trang lấy danh
 
 ### B1: Tạo thư mục `movie` trong thư mục `redux-utils`
 
-![Movie redux folder](https://raw.githubusercontent.com/hoaitn120282/frontendBase/develop/docs/assets/movie-redux.png)
+![Movie redux folder](assets/movie-redux.png)
+
+`constants.js`: Định nghĩa các type trạng thái của ứng dụng (Lưu ý nên đặt tên có prefix của redux module)
+
+```js
+// redux-utils/movie/constants.js
+export const MOVIE_FETCH_MOVIE = 'MOVIE_FETCH_MOVIE';
+export const MOVIE_FETCH_MOVIE_SUCCESS = 'MOVIE_FETCH_MOVIE_SUCCESS';
+export const MOVIE_FETCH_MOVIE_ERROR = 'MOVIE_FETCH_MOVIE_ERROR';
+```
 
 `actions.js`: Định nghĩa các action của redux được sử dụng trong **bindActionCreators**
 
@@ -19,26 +28,6 @@ export const getMovie = name => ({
         thunk: true
     }
 });
-```
-
-`constants.js`: Định nghĩa các type trạng thái của ứng dụng (Lưu ý nên đặt tên có prefix của redux module)
-
-```js
-// redux-utils/movie/constants.js
-export const MOVIE_FETCH_MOVIE = 'MOVIE_FETCH_MOVIE';
-export const MOVIE_FETCH_MOVIE_SUCCESS = 'MOVIE_FETCH_MOVIE_SUCCESS';
-export const MOVIE_FETCH_MOVIE_ERROR = 'MOVIE_FETCH_MOVIE_ERROR';
-```
-
-`index.js`: Xuất ra các đối tượng phục vụ cho redux
-
-```js
-// redux-utils/movie/index.js
-import movie from './reducer';
-import * as movieActions from './actions';
-import movieSagas from './sagas';
-
-export { movie, movieActions, movieSagas };
 ```
 
 `reducer.js`: Xử lý reducer cho redux
@@ -102,13 +91,22 @@ export default function* rootSaga() {
 }
 ```
 
-Ý nghĩa:
+`index.js`: Xuất ra các đối tượng phục vụ cho redux
+
+```js
+// redux-utils/movie/index.js
+import movie from './reducer';
+import * as movieActions from './actions';
+import movieSagas from './sagas';
+
+export { movie, movieActions, movieSagas };
+```
 
 > Lưu ý: Mỗi `redux module` cần xuất ra 3 đối tượng đó là **reducer**, **Action** và cuối cùng là **sagas**
 
 ### B2: Tạo thư mục `movie` trong thư mục `modules` và các tập tin tương ứng
 
-![Movie module folder](https://raw.githubusercontent.com/hoaitn120282/frontendBase/develop/docs/assets/movie-module.png)
+![Movie module folder](assets/movie-module.png)
 
 ```javascript
 // modules/modue/MovieContainer.js
